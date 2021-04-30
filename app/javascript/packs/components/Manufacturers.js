@@ -19,18 +19,45 @@ export default function Manufacturers() {
   }, []);
 
   return (
-    <div>
-      <ul>
-        {loadingManufacturers === true ?
-          'Loading...' :
-          manufacturers
-            .filter(manufacturer => manufacturer.Mfr_CommonName != null)
-            .sort((first, second) => first.Mfr_CommonName > second.Mfr_CommonName ? 1 : -1)
-            .map(manufacturer => (
-              <li key={manufacturer.Mfr_ID}>{manufacturer.Mfr_CommonName}</li>
-            ))
-        }
-      </ul>
+
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+          <h3>Manufacturers</h3>
+          {loadingManufacturers === true ?
+            "Loading" :
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>ID</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  manufacturers
+                    .filter(manufacturer => manufacturer.Mfr_CommonName != null)
+                    .sort((first, second) => first.Mfr_CommonName > second.Mfr_CommonName ? 1 : -1)
+                    .map(manufacturer => (
+                      <tr key={manufacturer.Mfr_ID}>
+                        <td>{manufacturer.Mfr_CommonName}</td>
+                        <td>{manufacturer.Mfr_ID}</td>
+                        <td>
+                          <button className="btn btn-secondary">Add to favorites</button>
+                        </td>
+                      </tr>
+                    ))
+                }
+              </tbody>
+            </table>
+          }
+        </div>
+        <div className="col-md-6">
+          <h3>Favorite Manufacturers</h3>
+          Temp
+        </div>
+      </div>
     </div>
   );
 }
