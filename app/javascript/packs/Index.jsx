@@ -5,10 +5,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Manufacturers from './components/Manufacturers'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    "initial",
+    <Manufacturers />,
     document.body.appendChild(document.getElementById("main")),
   )
 })
