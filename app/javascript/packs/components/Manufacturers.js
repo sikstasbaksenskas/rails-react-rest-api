@@ -16,16 +16,19 @@ export default function Manufacturers() {
       .catch(error => {
         console.log(error)
       });
-  });
+  }, []);
 
   return (
     <div>
       <ul>
         {loadingManufacturers === true ?
           'Loading...' :
-          manufacturers.map(manufacturer => (
-            <li key={manufacturer.Mfr_ID}>{manufacturer.Mfr_CommonName}</li>
-          ))
+          manufacturers
+            .filter(manufacturer => manufacturer.Mfr_CommonName != null)
+            .sort((first, second) => first.Mfr_CommonName > second.Mfr_CommonName ? 1 : -1)
+            .map(manufacturer => (
+              <li key={manufacturer.Mfr_ID}>{manufacturer.Mfr_CommonName}</li>
+            ))
         }
       </ul>
     </div>
