@@ -5,11 +5,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Manufacturers from './components/Manufacturers'
+import Home from './components/Home'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Manufacturers />,
+    <Home />,
     document.body.appendChild(document.getElementById("main")),
   )
 })
