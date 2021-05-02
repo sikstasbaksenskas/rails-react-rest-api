@@ -33,7 +33,7 @@ export default function FavoriteManufacturers() {
               {
                 favoriteManufacturers
                   .map((manufacturer, index) => (
-                    <FavoriteManufacturer key={index} manufacturer={manufacturer} />
+                    <FavoriteManufacturer key={index} manufacturer={manufacturer} setLoadingFavoriteManufacturers={setLoadingFavoriteManufacturers} />
                   ))
               }
             </tbody>

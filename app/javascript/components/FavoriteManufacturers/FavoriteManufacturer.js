@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteFavoriteManufacturer, updateFavoriteManufacturer } from "../../redux/actions/favoriteManufacturersAction";
 
-export default function FavoriteManufacturer({ manufacturer }) {
+export default function FavoriteManufacturer({ manufacturer, setLoadingFavoriteManufacturers }) {
   const dispatch = useDispatch();
   const [id, setId] = useState(manufacturer.id)
   const [name, setName] = useState(manufacturer.name)
@@ -12,7 +12,7 @@ export default function FavoriteManufacturer({ manufacturer }) {
 
   const cancelUpdate = () => {
     setEdit(false);
-    setName(manufacturer.name)
+    setName(manufacturer.name);
     setNameError("");
   }
 
@@ -24,6 +24,13 @@ export default function FavoriteManufacturer({ manufacturer }) {
       } else {
         setNameError(response.error);
       }
+    })
+  }
+
+  const executeDelete = () => {
+    setLoadingFavoriteManufacturers(true);
+    dispatch(deleteFavoriteManufacturer(id)).then((response) => {
+      setLoadingFavoriteManufacturers(false);
     })
   }
 
@@ -46,7 +53,7 @@ export default function FavoriteManufacturer({ manufacturer }) {
           </> :
           <>
             <button className="btn btn-secondary mr-1" onClick={() => setEdit(true)}>Edit</button>
-            <button className="btn btn-secondary" onClick={() => dispatch(deleteFavoriteManufacturer(id))}>Delete</button>
+            <button className="btn btn-secondary" onClick={() => executeDelete()}>Delete</button>
           </>
         }
       </td>
