@@ -57,6 +57,6 @@ export const updateFavoriteManufacturer = (name, id) => async (dispatch) => {
     });
     return { success: true }
   } catch (e) {
-    return { success: false }
+    return { success: false, error: e.response.data.name[0] }
   }
 }

@@ -8,16 +8,20 @@ export default function FavoriteManufacturer({ manufacturer }) {
   const [name, setName] = useState(manufacturer.name)
   const [manufacturer_id, setManufacturerId] = useState(manufacturer.manufacturer_id)
   const [edit, setEdit] = useState(false);
+  const [nameError, setNameError] = useState("");
 
   const cancelUpdate = () => {
     setEdit(false);
-    setName(manufacturer.name);
+    setNameError(manufacturer.name);
   }
 
   const executeUpdate = () => {
     dispatch(updateFavoriteManufacturer(name, id)).then((response) => {
       if (response.success) {
         setEdit(false);
+        setNameError("");
+      } else {
+        setNameError(response.error);
       }
     })
   }
@@ -25,7 +29,12 @@ export default function FavoriteManufacturer({ manufacturer }) {
   return (
     <tr>
       <td>
-        {edit ? <input value={name} onChange={(e) => setName(e.target.value)} /> : name}
+        {edit ?
+          <>
+            <input value={name} onChange={(e) => setName(e.target.value)} /> <br />
+            <span style={{ fontSize: "12px", color: "red" }}>{nameError}</span>
+          </>
+          : name}
       </td>
       <td>{manufacturer_id}</td>
       <td>

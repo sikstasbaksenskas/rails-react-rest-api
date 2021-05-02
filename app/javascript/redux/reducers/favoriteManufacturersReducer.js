@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         favoriteManufacturers: [...state.favoriteManufacturers].filter(
-          (filterItem) => filterItem.id !== action.payload
+          (manufacturer) => manufacturer.id != action.payload
         ),
       };
     default:
