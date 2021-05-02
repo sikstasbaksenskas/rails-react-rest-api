@@ -12,7 +12,8 @@ export default function FavoriteManufacturer({ manufacturer }) {
 
   const cancelUpdate = () => {
     setEdit(false);
-    setNameError(manufacturer.name);
+    setName(manufacturer.name)
+    setNameError("");
   }
 
   const executeUpdate = () => {
