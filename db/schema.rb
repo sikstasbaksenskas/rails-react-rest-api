@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_000114) do
+ActiveRecord::Schema.define(version: 2021_05_02_084421) do
 
   create_table "favorite_manufacturers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "manufacturer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "manufacturer_id"], name: "index_favorite_manufacturers_on_name_and_manufacturer_id", unique: true
   end
 
 end

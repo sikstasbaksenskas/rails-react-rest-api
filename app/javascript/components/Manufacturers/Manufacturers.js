@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Api from "../../packs/helper/Api"
+import Manufacturer from "./Manufacturer";
+import Api from "../../packs/helper/Api";
 
 export default function Manufacturers() {
   const api = new Api();
@@ -37,13 +38,7 @@ export default function Manufacturers() {
                 .filter(manufacturer => manufacturer.Mfr_CommonName != null)
                 .sort((first, second) => first.Mfr_CommonName > second.Mfr_CommonName ? 1 : -1)
                 .map(manufacturer => (
-                  <tr key={manufacturer.Mfr_ID}>
-                    <td>{manufacturer.Mfr_CommonName}</td>
-                    <td>{manufacturer.Mfr_ID}</td>
-                    <td>
-                      <button className="btn btn-secondary">Add to favorites</button>
-                    </td>
-                  </tr>
+                  <Manufacturer key={manufacturer.Mfr_ID} manufacturer={manufacturer} />
                 ))
             }
           </tbody>
