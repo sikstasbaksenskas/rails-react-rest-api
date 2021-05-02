@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getFavoriteManufacturers } from "../../../redux/actions/favoriteManufacturersAction";
+import { getFavoriteManufacturers } from "../../redux/actions/favoriteManufacturersAction";
 
 export default function FavoriteManufacturers() {
   const [loadingFavoriteManufacturers, setLoadingFavoriteManufacturers] = useState(true);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Api from "../../helper/Api"
+import Api from "../../packs/helper/Api"
 
 export default function Manufacturers() {
   const api = new Api();

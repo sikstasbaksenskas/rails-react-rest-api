@@ -6,7 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import Store from "../redux/Store";
-import Home from "./components/Home";
+import Home from "../components/Home";
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
