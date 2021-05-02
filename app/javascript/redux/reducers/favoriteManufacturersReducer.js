@@ -28,7 +28,7 @@ export default function (state = initialState, action) {
     case "DELETE_MANUFACTURER":
       return {
         ...state,
-        favoriteManufacturers: [...state.exefavoriteManufacturersrcises].filter(
+        favoriteManufacturers: [...state.favoriteManufacturers].filter(
           (filterItem) => filterItem.id !== action.payload
         ),
       };

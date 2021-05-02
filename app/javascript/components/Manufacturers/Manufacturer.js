@@ -4,8 +4,8 @@ import { createFavoriteManufacturer } from "../../redux/actions/favoriteManufact
 
 export default function Manufacturer({ manufacturer }) {
   const dispatch = useDispatch();
-  const name = useState(manufacturer.Mfr_CommonName);
-  const id = useState(manufacturer.Mfr_ID);
+  const [name, setName] = useState(manufacturer.Mfr_CommonName);
+  const [id, setId] = useState(manufacturer.Mfr_ID);
 
   return (
     <tr>
@@ -13,11 +13,11 @@ export default function Manufacturer({ manufacturer }) {
       <td>{id}</td>
       <td>
         <button
-          onClick={() => dispatch(createFavoriteManufacturer(name[0], id[0]))}
+          onClick={() => dispatch(createFavoriteManufacturer(name, id))}
           className="btn btn-secondary"
         >
           Add to favorites
-          </button>
+        </button>
       </td>
     </tr>
   );

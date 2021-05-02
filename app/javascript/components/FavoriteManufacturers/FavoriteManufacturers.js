@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import FavoriteManufacturer from "./FavoriteManufacturer";
 import { useSelector, useDispatch } from "react-redux";
 import { getFavoriteManufacturers } from "../../redux/actions/favoriteManufacturersAction";
 
@@ -31,15 +32,8 @@ export default function FavoriteManufacturers() {
             <tbody>
               {
                 favoriteManufacturers
-                  .map(manufacturer => (
-                    <tr key={manufacturer.id}>
-                      <td>{manufacturer.name}</td>
-                      <td>{manufacturer.manufacturer_id}</td>
-                      <td>
-                        <button className="btn btn-secondary mr-1">Edit</button>
-                        <button className="btn btn-secondary">Delete</button>
-                      </td>
-                    </tr>
+                  .map((manufacturer, index) => (
+                    <FavoriteManufacturer key={index} manufacturer={manufacturer} />
                   ))
               }
             </tbody>

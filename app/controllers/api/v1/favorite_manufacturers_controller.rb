@@ -34,6 +34,6 @@ class Api::V1::FavoriteManufacturersController < ApplicationController
   end
 
   def find_manufacturer
-    @favorite_manufacturer = FavoriteManufacturer.find(params[:favorite_manufacturer_id]) if params[:favorite_manufacturer_id]
+    @favorite_manufacturer = FavoriteManufacturer.find(params[:id]) if params[:id]
   end
 end
