@@ -15,7 +15,7 @@ class Api::V1::FavoriteManufacturersController < ApplicationController
   end
 
   def update
-    if @favorite_manufacturer.update_attributes favorite_manufacturer_params
+    if @favorite_manufacturer.update favorite_manufacturer_params
       render json: @favorite_manufacturer
     else
       render json: @favorite_manufacturer.errors, status: :unprocessable_entity
