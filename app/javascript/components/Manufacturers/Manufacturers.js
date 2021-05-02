@@ -37,8 +37,8 @@ export default function Manufacturers() {
               manufacturers
                 .filter(manufacturer => manufacturer.Mfr_CommonName != null)
                 .sort((first, second) => first.Mfr_CommonName > second.Mfr_CommonName ? 1 : -1)
-                .map(manufacturer => (
-                  <Manufacturer key={manufacturer.Mfr_ID} manufacturer={manufacturer} />
+                .map((manufacturer, index) => (
+                  <Manufacturer key={index} manufacturer={manufacturer} />
                 ))
             }
           </tbody>
