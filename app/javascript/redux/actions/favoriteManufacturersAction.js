@@ -27,9 +27,9 @@ export const createFavoriteManufacturer = (name, manufacturer_id) => async (disp
       type: "CREATE_FAVORITE_MANUFACTURER",
       payload: data,
     });
-    return { success: true}
+    return { success: true }
   } catch (e) {
-    return { success: false}
+    return { success: false, error: e.response.data.name[0] }
   }
 }
 
