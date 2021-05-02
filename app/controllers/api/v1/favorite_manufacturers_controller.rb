@@ -2,7 +2,7 @@ class Api::V1::FavoriteManufacturersController < ApplicationController
   before_action :find_manufacturer
 
   def index
-    render json: FavoriteManufacturer.all
+    render json: FavoriteManufacturer.all.order(created_at: :asc)
   end
 
   def create
