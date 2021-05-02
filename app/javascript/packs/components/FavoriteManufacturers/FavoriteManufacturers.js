@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Api from "../../helper/Api"
+import { useSelector, useDispatch } from "react-redux";
+import { getFavoriteManufacturers } from "../../../redux/actions/favoriteManufacturersAction";
 
 export default function FavoriteManufacturers() {
-  const api = new Api();
-  const [favoriteManufacturers, setFavoriteManufacturers] = useState([]);
   const [loadingFavoriteManufacturers, setLoadingFavoriteManufacturers] = useState(true);
+  const favoriteManufacturers = useSelector((state) => state.favoriteManufacturers.favoriteManufacturers);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    api
-      .getAllFavoriteManufacturers()
-      .then(response => {
-        setFavoriteManufacturers(response.data)
-        setLoadingFavoriteManufacturers(false)
-      })
-      .catch(error => {
-        console.log(error)
-      });
+    dispatch(getFavoriteManufacturers()).then((response) => {
+      setLoadingFavoriteManufacturers(false);
+    });
   }, []);
 
   return (
@@ -41,7 +36,8 @@ export default function FavoriteManufacturers() {
                       <td>{manufacturer.name}</td>
                       <td>{manufacturer.manufacturer_id}</td>
                       <td>
-                        <button className="btn btn-secondary">Edit</button>
+                        <button className="btn btn-secondary mr-1">Edit</button>
+                        <button className="btn btn-secondary">Delete</button>
                       </td>
                     </tr>
                   ))

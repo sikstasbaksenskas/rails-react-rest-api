@@ -5,6 +5,15 @@ class Api::V1::FavoriteManufacturersController < ApplicationController
     render json: FavoriteManufacturer.all
   end
 
+  def create
+    favorite_manufacturer = FavoriteManufacturer.new favorite_manufacturer_params
+    if favorite_manufacturer.save
+      render json: favorite_manufacturer
+    else
+      render json: favorite_manufacturer.errors, status: :unprocessable_entity
+    end
+  end
+
   def update
     if @favorite_manufacturer.update_attributes favorite_manufacturer_params
       render json: @favorite_manufacturer
@@ -21,7 +30,7 @@ class Api::V1::FavoriteManufacturersController < ApplicationController
   private
 
   def favorite_manufacturer_params
-    params.require(:favorite_manufacturer).permit(:name)
+    params.require(:favorite_manufacturer).permit!
   end
 
   def find_manufacturer
